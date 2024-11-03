@@ -3,10 +3,9 @@
 const body = document.querySelector('body');
 
 function waitFor(element, eventName) {
-  return new Promise((resolve, reject) => {
+  const error = `It was NOT ${eventName} on the element: ${element.nodeName}, id: ${element.id}.`;
+  const promise = new Promise((resolve, reject) => {
     if (!element) {
-      const error = `It was NOT ${eventName} on the element: ${element.nodeName}, id: ${element.id}.`;
-
       reject(error);
     }
 
@@ -16,6 +15,8 @@ function waitFor(element, eventName) {
       );
     });
   });
+
+  return promise;
 }
 
 const printMessage = (message) => {
