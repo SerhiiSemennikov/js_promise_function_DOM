@@ -3,9 +3,10 @@
 const body = document.querySelector('body');
 
 function waitFor(element, eventName) {
-  const error = `It was NOT ${eventName} on the element: ${element.nodeName}, id: ${element.id}.`;
   const promise = new Promise((resolve, reject) => {
     if (!element) {
+      const error = `Missing ${element}`;
+
       reject(error);
     }
 
